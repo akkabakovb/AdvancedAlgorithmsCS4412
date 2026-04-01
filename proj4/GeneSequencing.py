@@ -52,11 +52,8 @@ class GeneSequencing:
 						len(sequences[i]), align_length, ',BANDED' if banded else '')
 					alignment2 = '{}  DEBUG:(seq{}, {} chars,align_len={}{})'.format(seq2,j+1,
 						len(sequences[j]), align_length, ',BANDED' if banded else '')
-					# if i==2 and j ==9:
-						# print(seq1[:100])
-						# print(seq2[:100])
 ###################################################################################################
-					s = {'align_cost':score, 'seqi_first100':alignment1, 'seqj_first100':alignment2}
+					s = {'align_cost':score, 'seqi_first100':alignment1[:100] if score != math.inf else 'No Alignment Possible', 'seqj_first100':alignment2[:100] if score != math.inf else 'No Alignment Possible'}
 					table.item(i,j).setText('{}'.format(int(score) if score != math.inf else score))
 					table.update()
 				jresults.append(s)
